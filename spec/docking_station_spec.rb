@@ -31,8 +31,9 @@ describe DockingStation do
     expect(docker2_station.docker.length).to eq(20)
   end
   it "has docker got default capacity of 20?" do
+    default = 30
     docker3_station = DockingStation.new
-    20.times { docker3_station.dock Bike.new}
+    default.times { docker3_station.dock Bike.new}
     expect(docker3_station.docker.length).to eq(default)
   end
 end

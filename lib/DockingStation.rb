@@ -2,7 +2,7 @@ require "bike"
 
 class DockingStation
 
-  DEFAULT_CAPACITY = 20
+  DEFAULT_CAPACITY = 30
 
   attr_reader :docker
 
