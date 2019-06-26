@@ -1,0 +1,13 @@
+require "DockingStation"
+
+describe DockerStation do
+  docker_station = DockingStation.new
+
+  it "sums the prices of its line items" do
+
+    )    
+  end
+  it "#release_bike" do
+        
+  end
+end

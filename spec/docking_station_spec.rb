@@ -3,6 +3,8 @@ require "bike"
 
 describe DockingStation do
 
+  self::DEFAULT_CAPACITY = 20
+
   docker_station = DockingStation.new
 
   it "sums the prices of its line items" do

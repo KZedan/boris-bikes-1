@@ -2,23 +2,28 @@ require "bike"
 
 class DockingStation
 
+  DEFAULT_CAPACITY = 20
+
   attr_reader :docker
 
   def initialize()
     @docker = []
-    @capacity = 20
+    @capacity = DEFAULT_CAPACITY
   end
 
   def release_bike
     if @docker.empty?
-      raise "something no bikes literally"
+      raise "There are bikes available"
     else
       @docker.pop()
     end
   end
 
+  #private
   def full?
-    @docker.length >= 20
+    if @docker.length >= DEFAULT_CAPACITY
+      return true
+    end
   end
 
   def dock bike
@@ -28,6 +33,8 @@ class DockingStation
       raise "docking station is full"
     end
   end
+
+  #private
   def docker_empty?
     @docker.empty?
   end
