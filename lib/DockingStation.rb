@@ -2,13 +2,19 @@ require "bike"
 
 class DockingStation
 
-  DEFAULT_CAPACITY = 30
+  DEFAULT_CAPACITY = 20
 
   attr_reader :docker
 
   def initialize()
     @docker = []
-    @capacity = DEFAULT_CAPACITY
+    if @capacity.nil? || @capacity.empty?
+      @capacity = 20
+    elsif !@capacity
+      @capacity = DEFAULT_CAPACITY
+    else
+      @capacity = 20
+    end
   end
 
   def release_bike
