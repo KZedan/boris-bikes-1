@@ -29,7 +29,7 @@ class DockingStation
   def dock bike
     if !full?
       @docker.push(bike)
-    else
+    elsif @capacity >= DEFAULT_CAPACITY
       raise "docking station is full"
     end
   end
