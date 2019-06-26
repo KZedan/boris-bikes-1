@@ -30,4 +30,8 @@ describe DockingStation do
     20.times { docker2_station.dock Bike.new}
     expect(docker2_station.docker.length).to eq(20)
   end
+  it "capacity updated by maintainer" do
+    docker3_station = DockingStation.new
+    expect(docker3_station.initialize.capacity).to change { DEFAULT_CAPACITY}.by.(5)
+  end
 end
