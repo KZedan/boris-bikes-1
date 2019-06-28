@@ -18,7 +18,7 @@ class DockingStation
   end
 
   def release_bike
-    if @docker.empty?
+    if @docker.empty? && bike.report
       raise "There are bikes available"
     else
       @docker.pop()
@@ -33,7 +33,7 @@ class DockingStation
   end
 
   def dock bike
-    if !full?
+    if !full? && bike.report
       @docker.push(bike)
     elsif @capacity >= DEFAULT_CAPACITY
       raise "docking station is full"
@@ -44,4 +44,6 @@ class DockingStation
   def docker_empty?
     @docker.empty?
   end
+
+
 end
