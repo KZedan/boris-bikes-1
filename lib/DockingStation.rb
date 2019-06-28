@@ -1,4 +1,5 @@
 require "bike"
+require "van"
 
 class DockingStation
 
@@ -33,7 +34,7 @@ class DockingStation
   end
 
   def dock bike
-    if !full? && bike.report
+    if !full?
       @docker.push(bike)
     elsif @capacity >= DEFAULT_CAPACITY
       raise "docking station is full"

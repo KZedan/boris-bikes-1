@@ -35,4 +35,13 @@ describe DockingStation do
     default.times { docker3_station.dock Bike.new}
     expect(docker3_station.docker.length).to eq(default)
   end
+
+  let(:bike) { double :bike }
+  it 'releases working bikes' do
+    allow(bike).to receive(:working?).and_return(true)
+    subject.dock(bike)
+    released_bike = subject.release_bike
+    expect(released_bike).to be_working
+  end
+  
 end
