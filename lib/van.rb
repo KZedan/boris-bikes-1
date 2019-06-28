@@ -1,36 +1,47 @@
 require "bike"
+require "DockingStation"
 
 class Van
 
-  @destination = "garage"
-  # @load = Bike.report
+  DEFAULT_CAPACITY = 5
 
-  DEFAULT_CAPACITY = 20
+  attr_reader :docker
 
   def initialize()
+    @docker = []
+    bike = Bike.new
     if @capacity.nil? || @capacity.empty?
-      @capacity = 20
+      @capacity = 5
     elsif !@capacity
       @capacity = DEFAULT_CAPACITY
     else
-      @capacity = 20
+      @capacity = 5
     end
-
   end
 
   def moveTo
-    if @destination != "garage"
+    if @destination.empty? || @destination.nil?
       @destination = "garage"
-    else
+    elsif @destination == "garage"
       @destination = "DockingStation"
+    else
+      raise "Driver are on the brake"
+    end
+
+  end
+
+  #private
+  def full?
+    if @docker.length >= DEFAULT_CAPACITY
+      return true
     end
   end
 
-  def load
-    if @load == false
-      @destination = "garage"
+  def load bike
+    if bike.broken?
+      @docker.push(bike)
     else
-      "release bike in the dock"
+      raise "bike stay in the dock"
     end
   end
 
